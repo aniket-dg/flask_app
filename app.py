@@ -18,4 +18,4 @@ def doku_notification():
     return jsonify({"message": "Notification received"}), 200
 
 if __name__ == "__main__":
-    app.run('0.0.0.0', 5001)
+    app.run('0.0.0.0', 5000)
