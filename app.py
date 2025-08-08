@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-
+from tasks import log_response
 app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
@@ -10,10 +10,7 @@ def root_status():
 @app.route("/doku/payment-notification", methods=["POST"])
 def doku_notification():
     data = request.get_json(force=True)  # Parse JSON body
-    f = open("response.json", "a+")
-    import json
-    f.write(json.dumps(data))
-    f.close()
+    log_response.delay(data)
     print("📩 Received DOKU Notification:")
     print(data)
 
@@ -21,4 +18,4 @@ def doku_notification():
     return jsonify({"message": "Notification received"}), 200
 
 if __name__ == "__main__":
-    app.run('0.0.0.0', 5000)
+    app.run('0.0.0.0', 5001)
