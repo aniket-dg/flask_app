@@ -26,7 +26,7 @@ logger.addHandler(console_handler)
 def doku_notification():
     data = request.get_json(force=True)  # Parse JSON body
     # log_response.delay(data)
-    logger.info(data)
+    # logger.info(data)
     print("📩 Received DOKU Notification:")
     # print(data)
 
