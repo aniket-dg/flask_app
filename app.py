@@ -24,7 +24,7 @@ console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 @app.route("/doku/payment-notification", methods=["POST"])
 def doku_notification():
-    data = request.get_json(force=True)  # Parse JSON body
+    # data = request.data  # Parse JSON body
     # log_response.delay(data)
     # logger.info(data)
     print("📩 Received DOKU Notification:")
