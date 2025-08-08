@@ -6,6 +6,7 @@ app = Flask(__name__)
 def root_status():
     return jsonify({"status": "✅ Flask server is running"}), 200
 
+
 @app.route("/doku/payment-notification", methods=["POST"])
 def doku_notification():
     data = request.get_json(force=True)  # Parse JSON body
