@@ -7,12 +7,15 @@ def root_status():
     return jsonify({"status": "✅ Flask server is running"}), 200
 
 
+import logging
+logger = logging.getLogger("app")
 @app.route("/doku/payment-notification", methods=["POST"])
 def doku_notification():
     data = request.get_json(force=True)  # Parse JSON body
-    log_response.delay(data)
+    # log_response.delay(data)
+    logger.info(data)
     print("📩 Received DOKU Notification:")
-    print(data)
+    # print(data)
 
     # Respond with HTTP 200 and confirmation message
     return jsonify({"message": "Notification received"}), 200
